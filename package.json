@@ -1,25 +1,37 @@
 {
-  "dependencies": {
-    "express": "^5.2.1",
-    "nodemon": "^3.1.14"
-  },
   "name": "group-8",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Group 8 Login System with PostgreSQL",
+  "main": "app.js",
+  "type": "module",
+
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/villegasA21/Group-8.git"
   },
+
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+
   "bugs": {
     "url": "https://github.com/villegasA21/Group-8/issues"
   },
-  "homepage": "https://github.com/villegasA21/Group-8#readme"
+
+  "homepage": "https://github.com/villegasA21/Group-8#readme",
+
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.14",
+    "pg": "^8.16.3"
+  }
 }

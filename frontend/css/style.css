@@ -1,0 +1,602 @@
+/* =========================================
+   GROUP 8 LOGIN SYSTEM
+   MODERN GOLD & DARK DESIGN
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(201, 151, 0, 0.18),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(255, 255, 255, 0.07),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #0c0e10,
+            #171a1d,
+            #0b0d0f
+        );
+
+    color: #333;
+}
+
+
+/* =========================================
+   LOGIN CARD
+========================================= */
+
+.login-card {
+    position: relative;
+
+    width: 400px;
+
+    padding: 42px 38px 32px;
+
+    background: rgba(248, 248, 250, 0.98);
+
+    border: 1px solid rgba(255, 255, 255, 0.6);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(201, 151, 0, 0.08);
+
+    overflow: hidden;
+
+    animation: cardAppear 0.6s ease;
+}
+
+
+/* =========================================
+   CARD GOLD TOP LINE
+========================================= */
+
+.login-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #8d6800,
+        #c99700,
+        #f1c94a,
+        #c99700,
+        #8d6800
+    );
+}
+
+
+/* =========================================
+   DECORATIVE CIRCLE
+========================================= */
+
+.login-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    top: -90px;
+    right: -80px;
+
+    border: 1px solid rgba(201, 151, 0, 0.25);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 15px rgba(201, 151, 0, 0.03),
+        0 0 0 30px rgba(201, 151, 0, 0.02);
+}
+
+
+/* =========================================
+   GROUP 8 BRAND
+========================================= */
+
+.login-card h1 {
+    position: relative;
+
+    margin-bottom: 30px;
+
+    text-align: center;
+
+    color: #c99700;
+
+    font-size: 29px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+/* GROUP 8 */
+
+.login-card h1::before {
+    content: "GROUP 8";
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: #222;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 5px;
+}
+
+
+/* Subtitle */
+
+.login-card h1::after {
+    content: "Secure Account Access";
+
+    display: block;
+
+    margin-top: 9px;
+
+    color: #777;
+
+    font-size: 11px;
+
+    font-weight: 400;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.login-card input {
+    width: 100%;
+    height: 52px;
+
+    margin-bottom: 17px;
+
+    padding: 0 18px;
+
+    background: #ffffff;
+
+    border: 1px solid #dedede;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    color: #333;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Placeholder */
+
+.login-card input::placeholder {
+    color: #999;
+}
+
+
+/* Hover */
+
+.login-card input:hover {
+    border-color: #c99700;
+}
+
+
+/* Focus */
+
+.login-card input:focus {
+    border-color: #c99700;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 0 0 4px rgba(201, 151, 0, 0.10),
+        0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.login-card button {
+    width: 100%;
+    height: 52px;
+
+    margin-top: 4px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #161819,
+            #292c2e
+        );
+
+    color: #e0b52c;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Button hover */
+
+.login-card button:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #292c2e,
+            #101112
+        );
+
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.32);
+}
+
+
+/* Button click */
+
+.login-card button:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+.message {
+    width: 100%;
+
+    padding: 11px 13px;
+
+    margin-bottom: 16px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    border: 1px solid transparent;
+}
+
+
+.hidden {
+    display: none;
+}
+
+
+/* Error */
+
+.message.error {
+    background: #fff0f0;
+
+    color: #c62828;
+
+    border-color: #f2c4c4;
+}
+
+
+/* Success */
+
+.message.success {
+    background: #eff9ef;
+
+    color: #2e7d32;
+
+    border-color: #c8e6c9;
+}
+
+
+/* Info */
+
+.message.info {
+    background: #eef4fa;
+
+    color: #536b85;
+
+    border-color: #d4e0ec;
+}
+
+
+/* =========================================
+   REGISTER SECTION
+========================================= */
+
+.register-text {
+    margin-top: 22px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+.register-text a {
+    color: #b88a00;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+
+.register-text a:hover {
+    color: #e0b52c;
+
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard-card {
+    position: relative;
+
+    width: 520px;
+
+    padding: 45px;
+
+    text-align: center;
+
+    background: rgba(248, 248, 250, 0.98);
+
+    border: 1px solid rgba(255, 255, 255, 0.6);
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.45);
+
+    overflow: hidden;
+
+    animation: cardAppear 0.6s ease;
+}
+
+
+/* Dashboard gold line */
+
+.dashboard-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 5px;
+
+    background: linear-gradient(
+        90deg,
+        #8d6800,
+        #c99700,
+        #f1c94a,
+        #c99700,
+        #8d6800
+    );
+}
+
+
+/* Dashboard title */
+
+.dashboard-card h1 {
+    margin-top: 0;
+
+    margin-bottom: 10px;
+
+    color: #c99700;
+
+    font-size: 30px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+/* Dashboard subtitle */
+
+.dashboard-card h2 {
+    margin-bottom: 10px;
+
+    color: #333;
+
+    font-size: 20px;
+}
+
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+.logout {
+    margin-top: 25px;
+}
+
+
+.logout button {
+    width: 150px;
+
+    height: 45px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: #202223;
+
+    color: #d5a800;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.logout button:hover {
+    background: #111;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   ANIMATION
+========================================= */
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 15px;
+    }
+
+
+    .login-card {
+        width: 100%;
+
+        padding: 38px 25px 28px;
+
+        border-radius: 20px;
+    }
+
+
+    .login-card h1 {
+        font-size: 25px;
+    }
+
+
+    .login-card h1::before {
+        font-size: 11px;
+
+        letter-spacing: 4px;
+    }
+
+
+    .dashboard-card {
+        width: 100%;
+
+        padding: 35px 25px;
+
+        border-radius: 20px;
+    }
+
+
+    .dashboard-card h1 {
+        font-size: 26px;
+    }
+}

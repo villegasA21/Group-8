@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="dashboard-card">
+
+
+    <h1>
+        DASHBOARD
+    </h1>
+
+
+    <h2 id="welcome">
+        Welcome!
+    </h2>
+
+
+    <p>
+        You are successfully logged in.
+    </p>
+
+
+    <button
+        id="logoutBtn"
+        class="logout"
+    >
+        Logout
+    </button>
+
+
+</div>
+
+
+<script>
+
+const token =
+    localStorage.getItem("token");
+
+const user =
+    JSON.parse(
+        localStorage.getItem("user")
+        || "null"
+    );
+
+
+if (!token) {
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+if (user) {
+
+    document.getElementById(
+        "welcome"
+    ).textContent =
+        `Welcome, ${user.name}!`;
+
+}
+
+
+document.getElementById(
+    "logoutBtn"
+).addEventListener(
+    "click",
+    function() {
+
+        localStorage.removeItem(
+            "token"
+        );
+
+        localStorage.removeItem(
+            "user"
+        );
+
+        window.location.href =
+            "login.html";
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
