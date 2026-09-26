@@ -1,59 +1,24 @@
-import jwt from "jsonwebtoken";
+const jwt = require('jsonwebtoken');
 
-export function authenticateToken(
-    req,
-    res,
-    next
-) {
+const requireAuth = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Missing or invalid authentication token' });
+  }
 
-    const authorization =
-        req.headers.authorization;
+  const token = authHeader.split(' ')[1];
 
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_ACCESS_SECRET, {
+      issuer: process.env.JWT_ISSUER,
+      audience: process.env.JWT_AUDIENCE
+    });
+    
+    req.user = { id: decoded.sub };
+    next();
+  } catch (error) {
+    return res.status(401).json({ error: 'Token expired or invalid' });
+  }
+};
 
-    if (
-        !authorization ||
-        !authorization.startsWith("Bearer ")
-    ) {
-
-        return res.status(401).json({
-
-            success: false,
-
-            message:
-                "Please login first."
-
-        });
-
-    }
-
-
-    const token =
-        authorization.split(" ")[1];
-
-
-    try {
-
-        const decoded =
-            jwt.verify(
-                token,
-                process.env.JWT_SECRET
-            );
-
-
-        req.user = decoded;
-
-        next();
-
-    } catch (error) {
-
-        return res.status(403).json({
-
-            success: false,
-
-            message:
-                "Session expired."
-
-        });
-
-    }
-}
+module.exports = { requireAuth };

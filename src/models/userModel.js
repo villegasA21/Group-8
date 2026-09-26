@@ -1,58 +1,30 @@
-import pool from "../config/database.js";
+const db = require('../config/db');
 
+const createUser = async (email, passwordHash) => {
+  const result = await db.query(
+    'INSERT INTO users (email, password_hash) VALUES ($1, $2) RETURNING id, email, created_at',
+    [email, passwordHash]
+  );
+  return result.rows[0];
+};
 
-// Find user by email
-export async function findUserByEmail(email) {
+const getUserByEmail = async (email) => {
+  const result = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+  return result.rows[0];
+};
 
-    const result = await pool.query(
-        `
-        SELECT
-            id,
-            name,
-            email,
-            password
-        FROM users
-        WHERE LOWER(email) = LOWER($1)
-        `,
-        [email]
-    );
+const getUserById = async (id) => {
+  const result = await db.query('SELECT id, email, created_at FROM users WHERE id = $1', [id]);
+  return result.rows[0];
+};
 
-    return result.rows[0];
-}
+const updateRefreshToken = async (id, refreshToken) => {
+  await db.query('UPDATE users SET refresh_token = $1 WHERE id = $2', [refreshToken, id]);
+};
 
-
-// Create new user
-export async function createUser(
-    name,
-    email,
-    password
-) {
-
-    const result = await pool.query(
-        `
-        INSERT INTO users
-        (
-            name,
-            email,
-            password
-        )
-        VALUES
-        (
-            $1,
-            $2,
-            $3
-        )
-        RETURNING
-            id,
-            name,
-            email
-        `,
-        [
-            name,
-            email,
-            password
-        ]
-    );
-
-    return result.rows[0];
-}
+module.exports = {
+  createUser,
+  getUserByEmail,
+  getUserById,
+  updateRefreshToken
+};
